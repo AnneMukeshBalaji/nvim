@@ -68,11 +68,9 @@ require('packer').startup(function(use)
 	use 'hrsh7th/cmp-buffer'
 	use 'hrsh7th/cmp-path'
 	use 'hrsh7th/cmp-cmdline'
-
 	-- Snippet plugins
 	use 'hrsh7th/cmp-vsnip'
 	use 'hrsh7th/vim-vsnip'
-
 	-- Lualine
 	use {
 		'nvim-lualine/lualine.nvim',
@@ -311,6 +309,7 @@ require("noice").setup({
 
 -- Ensure vim-vsnip loads your custom snippets on Windows
 vim.g.vsnip_snippet_dir = vim.fn.expand('~') .. '\\AppData\\Local\\nvim\\snippets'
+
 
 
 -- Load keymaps from keymaps.lua

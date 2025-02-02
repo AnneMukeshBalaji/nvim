@@ -33,3 +33,11 @@ vim.api.nvim_set_keymap('n', '<Leader>f', ':Files<CR>', { noremap = true, silent
 vim.api.nvim_set_keymap('n', '<Leader>b', ':Buffers<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>g', ':GFiles<CR>', { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<Leader>h', ':History<CR>', { noremap = true, silent = true })
+
+
+-- Start live server with Ctrl + .
+vim.api.nvim_set_keymap('n', '<C-.>', ':!live-server &<CR>', { noremap = true, silent = true, desc = 'Start live server' })
+
+-- Stop live server with Ctrl + ,
+vim.api.nvim_set_keymap('n', '<C-,>', ':!pkill live-server<CR>', { noremap = true, silent = true, desc = 'Stop live server' })
+
