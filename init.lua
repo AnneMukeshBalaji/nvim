@@ -20,7 +20,7 @@ require('packer').startup(function(use)
 			vim.cmd.colorscheme("sonokai")
 		end,
 	}
-
+	use 'HerringtonDarkholme/yats.vim'
 	-- File Explorer
 	use 'kyazdani42/nvim-tree.lua'
 	-- folder icons

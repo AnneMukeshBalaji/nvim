@@ -241,22 +241,27 @@ _G.packer_plugins = {
     loaded = true,
     path = "C:\\Users\\hello\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\vim-vsnip",
     url = "https://github.com/hrsh7th/vim-vsnip"
+  },
+  ["yats.vim"] = {
+    loaded = true,
+    path = "C:\\Users\\hello\\AppData\\Local\\nvim-data\\site\\pack\\packer\\start\\yats.vim",
+    url = "https://github.com/HerringtonDarkholme/yats.vim"
   }
 }
 
 time([[Defining packer_plugins]], false)
--- Config for: fzf.vim
-time([[Config for fzf.vim]], true)
-try_loadstring("\27LJ\2\n8\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\1\tdown\b40%\15fzf_layout\6g\bvim\0", "config", "fzf.vim")
-time([[Config for fzf.vim]], false)
--- Config for: sonokai
-time([[Config for sonokai]], true)
-try_loadstring("\27LJ\2\nº\1\0\0\3\0\t\0\0186\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\3\0006\0\0\0009\0\1\0'\1\5\0=\1\4\0006\0\0\0009\0\6\0009\0\a\0'\2\b\0B\0\2\1K\0\1\0\fsonokai\16colorscheme\bcmd\14andromeda\18sonokai_style\26sonokai_enable_italic#sonokai_transparent_background\6g\bvim\0", "config", "sonokai")
-time([[Config for sonokai]], false)
 -- Config for: coc.nvim
 time([[Config for coc.nvim]], true)
 try_loadstring("\27LJ\2\nf\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\5\0\0\rcoc-html\fcoc-css\17coc-tsserver\17coc-snippets\26coc_global_extensions\6g\bvim\0", "config", "coc.nvim")
 time([[Config for coc.nvim]], false)
+-- Config for: sonokai
+time([[Config for sonokai]], true)
+try_loadstring("\27LJ\2\nº\1\0\0\3\0\t\0\0186\0\0\0009\0\1\0)\1\1\0=\1\2\0006\0\0\0009\0\1\0)\1\1\0=\1\3\0006\0\0\0009\0\1\0'\1\5\0=\1\4\0006\0\0\0009\0\6\0009\0\a\0'\2\b\0B\0\2\1K\0\1\0\fsonokai\16colorscheme\bcmd\14andromeda\18sonokai_style\26sonokai_enable_italic#sonokai_transparent_background\6g\bvim\0", "config", "sonokai")
+time([[Config for sonokai]], false)
+-- Config for: fzf.vim
+time([[Config for fzf.vim]], true)
+try_loadstring("\27LJ\2\n8\0\0\2\0\4\0\0056\0\0\0009\0\1\0005\1\3\0=\1\2\0K\0\1\0\1\0\1\tdown\b40%\15fzf_layout\6g\bvim\0", "config", "fzf.vim")
+time([[Config for fzf.vim]], false)
 
 _G._packer.inside_compile = false
 if _G._packer.needs_bufread == true then
