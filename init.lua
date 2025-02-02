@@ -299,6 +299,11 @@ vim.opt.fillchars:append({ eob = " " })
 
 -- Noice configuration
 require("noice").setup({
+	lsp = {
+		signature = { enabled = true },
+		hover = { enabled = true },
+		documentation = { enabled = true },
+	},
 	highlights = {
 		normal = { fg = "#ffffff", bg = "#282828" }, -- Text color and background
 		info = { fg = "#00ff00", bg = "#282828" },   -- Info message color
