@@ -1,0 +1,8 @@
+{
+	"snippets.ultisnips.pythonPrompt": false,
+	"coc.preferences.snippetSupport": true,
+	"html.suggest.html5": true,
+	"html.format.enable": true,
+	"coc.preferences.snippetSupport": true
+}
+
