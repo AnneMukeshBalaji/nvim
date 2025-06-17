@@ -1,30 +1,53 @@
+-- lua/plugins/colorscheme.lua  (or any file you source from your Lazy setup)
 return {
-  "folke/tokyonight.nvim",
-  name = "tokyonight",
-  lazy = false,
-  priority = 1000,
-  config = function()
-    require("tokyonight").setup({
-      style = "moon",
-      transparent = true,
-      terminal_colors = true,
-      styles = {
-        comments = { italic = false, bold = true },
-        keywords = { italic = false ,bold = false }, 
-        functions = {},
-        variables = {},
-        sidebars = "transparent",
-        floats = "transparent",
-      },
-      on_highlights = function(hl, c)
-        hl.MsgArea = { fg = "#00ff00" } -- or use c.green
-        -- Noice-specific groups
-        hl.NoiceCmdlinePopupBorder = { fg = c.cyan, bg = "NONE" }
-        hl.NoiceCmdlinePopup = { fg = c.green, bg = "NONE" }
-      end,
-    })
+  {
+    "craftzdog/solarized-osaka.nvim",
+    name = "solarized-osaka",
+    lazy = false,          -- load at startup
+    priority = 1000,       -- load before everything else
+    opts = {
+      ------------------------------------------------------------------
+      -- 1. Core toggle
+      ------------------------------------------------------------------
+      transparent = true,      -- **master switch**: don’t set any bg
 
-    vim.cmd("colorscheme tokyonight")
-  end,
+      ------------------------------------------------------------------
+      -- 2. Fine‑tune what should be see‑through
+      ------------------------------------------------------------------
+      styles = {
+        sidebars = "transparent",   -- nvim-tree, qf, help…
+        floats   = "transparent",   -- :lua print(vim.inspect()) pop‑ups
+      },
+
+      ------------------------------------------------------------------
+      -- 3. (Optional) wipe residual UI backgrounds
+      ------------------------------------------------------------------
+      on_highlights = function(hl, c)
+        local none = "NONE"   -- 👈 avoids the earlier “local transparent” bug
+        -- main editing area
+        hl.Normal       = { bg = none }
+        hl.NormalNC     = { bg = none }
+        hl.EndOfBuffer  = { bg = none }
+        -- line numbers & gutters
+        hl.SignColumn   = { bg = none }
+        hl.LineNr       = { bg = none }
+        hl.CursorLineNr = { bg = none }
+        -- splits / borders / statuslines
+        hl.WinSeparator = { bg = none }
+        hl.StatusLine   = { bg = none }
+        hl.StatusLineNC = { bg = none }
+        -- floating windows
+        hl.NormalFloat  = { bg = none }
+      end,
+    },
+
+    --------------------------------------------------------------------
+    -- 4. Setup + apply the colourscheme
+    --------------------------------------------------------------------
+    config = function(_, opts)
+      require("solarized-osaka").setup(opts)
+      vim.cmd.colorscheme("solarized-osaka")
+    end,
+  },
 }
 
