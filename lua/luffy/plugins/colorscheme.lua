@@ -38,6 +38,8 @@ return {
         hl.StatusLineNC = { bg = none }
         -- floating windows
         hl.NormalFloat  = { bg = none }
+        -- 🔥 make comments bold
+        hl.Comment = { fg = c.comment, bold = true }
       end,
     },
 
