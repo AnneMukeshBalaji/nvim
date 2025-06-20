@@ -10,8 +10,8 @@ return {
       transparent_background = true,
       styles = {
         comments = { "bold" },
-        functions = {},
-        keywords = {},
+        functions = {"bold"},
+        keywords = {"bold"},
         strings = {},
         variables = {},
       },
