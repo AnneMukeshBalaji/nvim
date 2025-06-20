@@ -1,5 +1,5 @@
--- lua/plugins/colorscheme.lua
 return {
+  -- Catppuccin Theme
   {
     "catppuccin/nvim",
     name = "catppuccin",
@@ -10,8 +10,8 @@ return {
       transparent_background = true,
       styles = {
         comments = { "bold" },
-        functions = {"bold"},
-        keywords = {"bold"},
+        functions = { "bold" },
+        keywords = {},
         strings = {},
         variables = {},
       },
@@ -46,8 +46,28 @@ return {
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin")
+      vim.cmd.colorscheme("gruvbox") -- default theme
     end,
+  },
+
+  -- Gruvbox Theme
+  {
+    "ellisonleao/gruvbox.nvim",
+    name = "gruvbox",
+    priority = 999,
+    opts = {
+      terminal_colors = true,
+      transparent_mode = true,
+      overrides = {
+        SignColumn   = { bg = "NONE" },
+        Normal       = { bg = "NONE" },
+        NormalNC     = { bg = "NONE" },
+        LineNr       = { bg = "NONE" },
+        EndOfBuffer  = { bg = "NONE" },
+        StatusLine   = { bg = "NONE" },
+        StatusLineNC = { bg = "NONE" },
+      },
+    },
   },
 }
 
