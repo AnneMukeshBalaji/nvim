@@ -46,7 +46,7 @@ return {
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("gruvbox") -- default theme
+      vim.cmd.colorscheme("catppuccin") -- default theme
     end,
   },
 
