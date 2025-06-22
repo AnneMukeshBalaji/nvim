@@ -6,7 +6,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      flavour = "mocha", -- Options: latte, frappe, macchiato, mocha
+      flavour = "macchiato", -- latte, frappe, macchiato, mocha
       transparent_background = true,
       styles = {
         comments = { "bold" },
@@ -20,9 +20,7 @@ return {
         gitsigns = true,
         nvimtree = true,
         treesitter = true,
-        telescope = {
-          enabled = true,
-        },
+        telescope = { enabled = true },
         notify = true,
         mini = true,
       },
@@ -46,28 +44,35 @@ return {
     },
     config = function(_, opts)
       require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin") -- default theme
+      vim.cmd.colorscheme("catppuccin") -- Set Catppuccin as default
     end,
   },
 
-  -- Gruvbox Theme
+  -- Kanagawa Theme
   {
-    "ellisonleao/gruvbox.nvim",
-    name = "gruvbox",
-    priority = 999,
-    opts = {
-      terminal_colors = true,
-      transparent_mode = true,
-      overrides = {
-        SignColumn   = { bg = "NONE" },
-        Normal       = { bg = "NONE" },
-        NormalNC     = { bg = "NONE" },
-        LineNr       = { bg = "NONE" },
-        EndOfBuffer  = { bg = "NONE" },
-        StatusLine   = { bg = "NONE" },
-        StatusLineNC = { bg = "NONE" },
-      },
-    },
+    "rebelot/kanagawa.nvim",
+    name = "kanagawa",
+    lazy = true,
+    priority = 900,
+    config = function()
+      require("kanagawa").setup({
+        transparent = true,
+        theme = "lotus", -- Options: "wave", "dragon", "lotus"
+        overrides = function(colors)
+          return {
+            Normal       = { bg = "NONE" },
+            NormalNC     = { bg = "NONE" },
+            EndOfBuffer  = { bg = "NONE" },
+            SignColumn   = { bg = "NONE" },
+            LineNr       = { bg = "NONE" },
+            CursorLineNr = { bg = "NONE" },
+            StatusLine   = { bg = "NONE" },
+            StatusLineNC = { bg = "NONE" },
+            NormalFloat  = { bg = "NONE" },
+          }
+        end,
+      })
+    end,
   },
 }
 
