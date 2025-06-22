@@ -37,7 +37,7 @@ return {
             StatusLine   = { bg = "NONE" },
             StatusLineNC = { bg = "NONE" },
             NormalFloat  = { bg = "NONE" },
-            Comment      = { fg = colors.overlay1, bold = true },
+            Comment      = { fg = colors.flamingo bold = true },
           }
         end,
       },
