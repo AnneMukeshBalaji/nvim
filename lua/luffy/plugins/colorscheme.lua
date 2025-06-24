@@ -1,20 +1,25 @@
 return {
+  "folke/tokyonight.nvim",
+  name = "tokyonight",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("tokyonight").setup({
+      style = "night", -- Options: "storm", "moon", "night", "day"
+      transparent = true, -- Make background transparent
+      terminal_colors = true,
+      styles = {
+        comments = { italic = false, bold = true, fg ='#ffd5e6' },
+        keywords = { italic = false},
+        functions = {italic = false},
+        variables = {italic = false},
+        sidebars = "transparent", -- also make sidebar (like NvimTree) transparent
+        floats = "transparent", -- make floating windows transparent
+      },
+    })
 
-  -- 🧛 OneDark Theme
-  {
-    "navarasu/onedark.nvim",
-    name = "onedark",
-    lazy = false,
-    priority = 1000,
-    opts = {
-      style = "deep", -- Options: dark, darker, cool, deep, warm, warmer, light
-      transparent = true,
-    },
-    config = function(_, opts)
-      require("onedark").setup(opts)
-      require("onedark").load()
-    end,
-  },
-
+    vim.cmd("colorscheme tokyonight")
+  end,
 }
+
 
