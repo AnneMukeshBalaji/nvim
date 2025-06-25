@@ -10,6 +10,7 @@ return {
       terminal_colors = true,
       styles = {
         comments = { italic = false, bold = true, fg ='#00cc00' },
+        comments = { italic = false, bold = true, fg ='#5ed5e6' },
         keywords = { italic = false},
         functions = {italic = false},
         variables = {italic = false},
