@@ -20,10 +20,19 @@ return {
           sidebars = "transparent",
           floats = "transparent",
         },
+        on_highlights = function(hl, c)
+          -- Remove italics from default highlight groups
+          hl.Comment = { fg = "#00cc00", italic = false, bold = true }
+          hl.Function = { italic = false }
+          hl.Keyword = { italic = false }
+          hl.Type = { italic = false }
+          hl.Variable = { italic = false }
+          hl.Identifier = { italic = false }
+        end,
       })
 
       -- Uncomment this to enable Tokyonight
-      -- vim.cmd("colorscheme tokyonight")
+      vim.cmd("colorscheme tokyonight")
 
       -- Make autocomplete popup (cmp, coc, etc.) transparent
       vim.cmd([[
@@ -31,7 +40,7 @@ return {
         highlight PmenuSel guibg=#283457 guifg=#ffffff
         highlight PmenuSbar guibg=NONE
         highlight PmenuThumb guibg=#3b4261
-        ]])
+      ]])
     end,
   },
 
@@ -48,7 +57,6 @@ return {
         keywords = { italic = false },
         functions = { italic = false },
         variables = { italic = false },
-
         sidebars = "transparent",
         floats = "transparent",
       },
@@ -64,6 +72,14 @@ return {
         hl.StatusLine   = { bg = none }
         hl.StatusLineNC = { bg = none }
         hl.NormalFloat  = { bg = none }
+
+        -- Remove italics from standard groups
+        hl.Comment = { fg = "#00cc00", italic = false, bold = true }
+        hl.Function = { italic = false }
+        hl.Keyword = { italic = false }
+        hl.Type = { italic = false }
+        hl.Variable = { italic = false }
+        hl.Identifier = { italic = false }
       end,
     },
     config = function(_, opts)
