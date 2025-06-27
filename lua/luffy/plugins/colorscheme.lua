@@ -1,29 +1,37 @@
--- lua/plugins/colorscheme.lua  (or any file you source from your Lazy setup)
 return {
   {
     "craftzdog/solarized-osaka.nvim",
     name = "solarized-osaka",
-    lazy = false,          -- load at startup
-    priority = 1000,       -- load before everything else
+    lazy = false,          
+    priority = 1000,       
     opts = {
       ------------------------------------------------------------------
       -- 1. Core toggle
       ------------------------------------------------------------------
-      transparent = true,      -- **master switch**: don’t set any bg
+      transparent = true,      
 
       ------------------------------------------------------------------
       -- 2. Fine‑tune what should be see‑through 
       ------------------------------------------------------------------
       styles = {
-        sidebars = "transparent",   -- nvim-tree, qf, help…
-        floats   = "transparent",   -- :lua print(vim.inspect()) pop‑ups
+        comments = { italic = false },
+        keywords = { italic = false },
+        functions = {italic = false },
+        variables = {italic = false },
+        sidebars = "transparent",   
+        floats   = "transparent",   
       },
 
       ------------------------------------------------------------------
-      -- 3. (Optional) wipe residual UI backgrounds
+      -- 3. Turn off all italics
+      ------------------------------------------------------------------
+      disable_italics = true,
+
+      ------------------------------------------------------------------
+      -- 4. (Optional) wipe residual UI backgrounds + custom highlights
       ------------------------------------------------------------------
       on_highlights = function(hl, c)
-        local none = "NONE"   -- 👈 avoids the earlier “local transparent” bug
+        local none = "NONE"
         -- main editing area
         hl.Normal       = { bg = none }
         hl.NormalNC     = { bg = none }
@@ -38,11 +46,13 @@ return {
         hl.StatusLineNC = { bg = none }
         -- floating windows
         hl.NormalFloat  = { bg = none }
+        -- comments: skyblue and bold, no italic
+        hl.Comment = { fg = "#87CEEB", bold = true, italic = false }  -- SkyBlue
       end,
     },
 
     --------------------------------------------------------------------
-    -- 4. Setup + apply the colourscheme
+    -- 5. Setup + apply the colourscheme
     --------------------------------------------------------------------
     config = function(_, opts)
       require("solarized-osaka").setup(opts)
@@ -50,5 +60,4 @@ return {
     end,
   },
 }
-
 
