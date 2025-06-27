@@ -22,7 +22,7 @@ return {
       "       \"\\       \"      \\X/      \"       /\"",
       "                  Zach Bolinger",
       "",
-      "    \"I'm whatever Gotham needs me to be.\" – Batman",
+      "    \"Batman may die..But Bruce Wayne? Never\" – Batman",
     }
 
     -- Set menu
