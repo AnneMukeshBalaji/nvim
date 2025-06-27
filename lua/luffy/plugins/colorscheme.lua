@@ -1,5 +1,8 @@
 -- lua/plugins/colorscheme.lua
 
+-- Choose your colorscheme here: "tokyonight", "solarized-osaka", "gruvbox"
+local colorscheme_name = "gruvbox"
+
 return {
   -- Tokyonight colorscheme
   {
@@ -9,7 +12,7 @@ return {
     priority = 1000,
     config = function()
       require("tokyonight").setup({
-        style = "night", -- Options: "storm", "moon", "night", "day"
+        style = "night",
         transparent = true,
         terminal_colors = true,
         styles = {
@@ -21,7 +24,6 @@ return {
           floats = "transparent",
         },
         on_highlights = function(hl, c)
-          -- Remove italics from default highlight groups
           hl.Comment = { fg = "#00cc00", italic = false, bold = true }
           hl.Function = { italic = false }
           hl.Keyword = { italic = false }
@@ -31,10 +33,10 @@ return {
         end,
       })
 
-      -- Uncomment this to enable Tokyonight
-      vim.cmd("colorscheme tokyonight")
+      if colorscheme_name == "tokyonight" then
+        vim.cmd("colorscheme tokyonight")
+      end
 
-      -- Make autocomplete popup (cmp, coc, etc.) transparent
       vim.cmd([[
         highlight Pmenu guibg=NONE
         highlight PmenuSel guibg=#283457 guifg=#ffffff
@@ -73,7 +75,6 @@ return {
         hl.StatusLineNC = { bg = none }
         hl.NormalFloat  = { bg = none }
 
-        -- Remove italics from standard groups
         hl.Comment = { fg = "#00cc00", italic = false, bold = true }
         hl.Function = { italic = false }
         hl.Keyword = { italic = false }
@@ -84,9 +85,41 @@ return {
     },
     config = function(_, opts)
       require("solarized-osaka").setup(opts)
+      if colorscheme_name == "solarized-osaka" then
+        vim.cmd("colorscheme solarized-osaka")
+      end
+    end,
+  },
 
-      -- Uncomment this to enable Solarized Osaka
-      -- vim.cmd.colorscheme("solarized-osaka")
+  -- Gruvbox colorscheme
+  {
+    "ellisonleao/gruvbox.nvim",
+    name = "gruvbox",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      terminal_colors = true,
+      transparent_mode = true,
+      italic = {
+        strings = false,
+        emphasis = false,
+        comments = false,
+        operators = false,
+        folds = false,
+      },
+      overrides = {
+        Comment = { fg = "#00cc00", italic = false, bold = true },
+        Function = { italic = false },
+        Keyword = { italic = false },
+        Type = { italic = false },
+        Identifier = { italic = false },
+      },
+    },
+    config = function(_, opts)
+      require("gruvbox").setup(opts)
+      if colorscheme_name == "gruvbox" then
+        vim.cmd("colorscheme gruvbox")
+      end
     end,
   },
 }
