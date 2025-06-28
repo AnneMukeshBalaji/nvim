@@ -30,7 +30,12 @@ return {
         highlight SignColumn guibg=NONE ctermbg=NONE
         highlight EndOfBuffer guibg=NONE ctermbg=NONE
         ]]
+      -- ✅ Fix nvim-notify background fallback
+      require("notify").setup({
+        background_colour = "#1e1e2e", -- Replace with your real background!
+      })
     end,
   },
 }
+
 
