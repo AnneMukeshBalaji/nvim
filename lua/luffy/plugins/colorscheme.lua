@@ -1,67 +1,35 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "navarasu/onedark.nvim",
+    name = "onedark",
     lazy = false,
     priority = 1000,
-    opts = {
-      flavour = "mocha", -- or "latte", "frappe", "macchiato"
-      transparent_background = true,
-      no_italic = true,
-      styles = {
-        comments = { "bold" },
-        conditionals = {},
-        loops = {},
-        functions = {},
-        keywords = { "bold" },
-        strings = {},
-        variables = {},
-        numbers = {},
-        booleans = {},
-        properties = {},
-        types = {},
-        operators = {},
-      },
-      highlight_overrides = {
-        mocha = function(C)
-          return {
-            -- main editing area
-            Normal = { bg = "NONE" },
-            NormalNC = { bg = "NONE" },
-            EndOfBuffer = { bg = "NONE" },
-            -- line numbers & gutter
-            SignColumn = { bg = "NONE" },
-            LineNr = { bg = "NONE" },
-            CursorLineNr = { bg = "NONE" },
-            -- borders and status
-            WinSeparator = { bg = "NONE" },
-            StatusLine = { bg = "NONE" },
-            StatusLineNC = { bg = "NONE" },
-            -- floating windows
-            NormalFloat = { bg = "NONE" },
-            -- comment style
-            Comment = { fg = C.blue, bold = true, italic = false },
-            -- wipe italics from other common groups
-            Function = { italic = false },
-            Identifier = { italic = false },
-            Type = { italic = false },
-            Statement = { italic = false },
-            Keyword = { italic = false },
-            Constant = { italic = false },
-            String = { italic = false },
-            Character = { italic = false },
-            PreProc = { italic = false },
-            Number = { italic = false },
-            Boolean = { italic = false },
-            Repeat = { italic = false },
-            Conditional = { italic = false },
-          }
-        end,
-      },
-    },
-    config = function(_, opts)
-      require("catppuccin").setup(opts)
-      vim.cmd.colorscheme("catppuccin")
+    config = function()
+      require("onedark").setup {
+        style = "darker",
+        transparent = true,
+        code_style = {
+          comments = 'bold',
+          keywords = 'none',
+          functions = 'bold',
+          strings = 'none',
+          variables = 'none'
+        }
+      }
+      require("onedark").load()
+      -- EXTRA: make common UI groups fully transparent too
+      vim.cmd [[
+        highlight Normal guibg=NONE ctermbg=NONE
+        highlight NormalNC guibg=NONE ctermbg=NONE
+        highlight NormalFloat guibg=NONE ctermbg=NONE
+        highlight FloatBorder guibg=NONE ctermbg=NONE
+        highlight TelescopeNormal guibg=NONE ctermbg=NONE
+        highlight TelescopeBorder guibg=NONE ctermbg=NONE
+        highlight VertSplit guibg=NONE ctermbg=NONE
+        highlight StatusLine guibg=NONE ctermbg=NONE
+        highlight SignColumn guibg=NONE ctermbg=NONE
+        highlight EndOfBuffer guibg=NONE ctermbg=NONE
+        ]]
     end,
   },
 }
