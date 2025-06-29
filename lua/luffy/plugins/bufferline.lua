@@ -9,3 +9,7 @@ return {
     },
   },
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> e627c54 ( changed to catpuccin)
