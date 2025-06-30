@@ -20,7 +20,6 @@ return {
       "  |XXX|       \\XXX/^^\\XXXXX/^^\\XXX/       |XXX|",
       "    \\XX\\       \\X/    \\XXX/    \\X/       /XX/",
       "       \"\\       \"      \\X/      \"       /\"",
-      "                  Zach Bolinger",
       "",
       "    \"Batman may die..But Bruce Wayne? Never\" – Batman",
     }
