@@ -1,15 +1,23 @@
 return {
   {
-    "oxfist/night-owl.nvim",
-    name = "night-owl",
+    "navarasu/onedark.nvim",
+    name = "onedark",
     priority = 1000,
     lazy = false,
     config = function()
-      require("night-owl").setup({
-        transparent_background = true,
+      require("onedark").setup({
+        style = "dark", -- closest to VSCode's One Dark
+        transparent = true,
+        code_style = {
+          comments = "none",
+          keywords = "none",
+          functions = "none",
+          strings = "none",
+          variables = "none",
+        },
       })
 
-      vim.cmd.colorscheme("night-owl")
+      vim.cmd.colorscheme("onedark")
 
       -- Force transparency for extra UI bits
       vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -36,7 +44,7 @@ return {
       vim.api.nvim_set_hl(0, "@variable.member", { italic = false })
       vim.api.nvim_set_hl(0, "@field", { italic = false })
 
-      -- 🔑 Make EVERY highlight group non-italic
+      -- Loop: remove italics for everything
       for _, group in ipairs(vim.fn.getcompletion("", "highlight")) do
         local ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = group })
         if ok and hl.italic then
@@ -46,7 +54,7 @@ return {
       end
 
       require("notify").setup({
-        background_colour = "#011627",
+        background_colour = "#282c34",
       })
     end,
   },
