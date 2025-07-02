@@ -12,7 +12,6 @@ return {
     local lspconfig = require("lspconfig")
     local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-    -- Set LSP keymaps
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("UserLspConfig", {}),
       callback = function(ev)
@@ -48,14 +47,12 @@ return {
       end,
     })
 
-    -- Diagnostic symbols
     local signs = { Error = " ", Warn = " ", Hint = "󰠠 ", Info = " " }
     for type, icon in pairs(signs) do
       local hl = "DiagnosticSign" .. type
       vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
     end
 
-    -- *** ADDED: Enable inline diagnostics like VSCode red underlines and virtual text ***
     vim.diagnostic.config({
       virtual_text = {
         prefix = "●",
@@ -67,7 +64,6 @@ return {
       severity_sort = true,
     })
 
-    -- Shared capabilities
     local capabilities = cmp_nvim_lsp.default_capabilities()
 
     -- Lua
@@ -81,12 +77,23 @@ return {
       },
     })
 
-    -- Emmet
+    -- HTML LSP
+    lspconfig.html.setup({
+      capabilities = capabilities,
+      filetypes = { "html", "ejs" },
+    })
+
+    -- TSServer (JavaScript/TypeScript)
+    lspconfig.tsserver.setup({
+      capabilities = capabilities,
+    })
+
+    -- Emmet with EJS
     lspconfig.emmet_ls.setup({
       capabilities = capabilities,
       filetypes = {
         "html", "css", "scss", "sass", "less",
-        "javascriptreact", "typescriptreact", "svelte"
+        "javascriptreact", "typescriptreact", "svelte", "ejs",
       },
     })
 
