@@ -11,4 +11,8 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt.formatoptions:remove({ "c", "r", "o" })
   end,
 })
+vim.api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = "*.ejs",
+  command = "set filetype=html",
+})
 
