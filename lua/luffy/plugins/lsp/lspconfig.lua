@@ -83,8 +83,8 @@ return {
       filetypes = { "html", "ejs" },
     })
 
-    -- TSServer (JavaScript/TypeScript)
-    lspconfig.tsserver.setup({
+    -- Use ts_ls instead of deprecated tsserver
+    lspconfig.ts_ls.setup({
       capabilities = capabilities,
     })
 
