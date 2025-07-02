@@ -1,25 +1,32 @@
-return {
-  {
-    "echasnovski/mini.animate",
-    version = false,  -- Use latest commit
-    lazy = false,     -- Load immediately (or you can set `event = "VeryLazy"` to defer)
-    config = function()
-      require('mini.animate').setup({
-        -- Example: Enable cursor animation, scroll, and window resize
-        cursor = {
-          enable = true,
-          timing = require('mini.animate').gen_timing.linear({ duration = 100, unit = 'total' }),
-        },
-        scroll = {
-          enable = true,
-          timing = require('mini.animate').gen_timing.linear({ duration = 150, unit = 'total' }),
-        },
-        resize = {
-          enable = true,
-          timing = require('mini.animate').gen_timing.linear({ duration = 200, unit = 'total' }),
-        },
-      })
-    end,
-  },
+return{
+  "echasnovski/mini.animate",
+  version = true, -- always use latest
+  event = "VeryLazy",
+  config = function()
+    require('mini.animate').setup({
+      -- Enable smooth scroll, resize, cursor, and open/close
+      scroll = {
+        enable = true,
+        timing = require('mini.animate').gen_timing.linear({ duration = 100, unit = 'total' }),
+        subscroll = nil,
+      },
+      cursor = {
+        enable = true,
+        timing = require('mini.animate').gen_timing.linear({ duration = 50, unit = 'step' }),
+      },
+      resize = {
+        enable = true,
+        timing = require('mini.animate').gen_timing.linear({ duration = 150, unit = 'total' }),
+      },
+      open = {
+        enable = true,
+        timing = require('mini.animate').gen_timing.linear({ duration = 150, unit = 'total' }),
+      },
+      close = {
+        enable = true,
+        timing = require('mini.animate').gen_timing.linear({ duration = 150, unit = 'total' }),
+      },
+    })
+  end,
 }
 
