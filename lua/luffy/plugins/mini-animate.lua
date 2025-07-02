@@ -1,6 +1,6 @@
 return{
   "echasnovski/mini.animate",
-  version = true, -- always use latest
+  version = false, -- always use latest
   event = "VeryLazy",
   config = function()
     require('mini.animate').setup({
