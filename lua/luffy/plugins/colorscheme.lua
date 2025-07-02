@@ -1,28 +1,35 @@
 return {
-  "folke/tokyonight.nvim",
-  name = "tokyonight",
+  "ellisonleao/gruvbox.nvim",
+  name = "gruvbox",
   lazy = false,
-  priority = 1000,
+  priority = 1005,
   config = function()
-    require("tokyonight").setup({
-      style = "night", -- Options: "storm", "moon", "night", "day"
-      transparent = true, -- Make background transparent
-      terminal_colors = true,
-      styles = {
-        comments = { italic = false, bold = true, fg ='#deffaf' },
-        keywords = { italic = false},
-        functions = {italic = false},
-        variables = {italic = false},
-        sidebars = "transparent", -- also make sidebar (like NvimTree) transparent
-        floats = "transparent", -- make floating windows transparent
+    require("gruvbox").setup({
+      contrast = "hard",             -- Use "hard" contrast
+      transparent_mode = true,       -- Make background transparent
+      terminal_colors = true,        -- Enable terminal colors
+      italic = {
+        comments = false,
+        keywords = false,
+        functions = false,
+        strings = false,
+        variables = false,
+      },
+      overrides = {
+        Comment = { fg = "#deffaf", bold = true },
       },
     })
 
-    vim.cmd("colorscheme tokyonight")
-    -- Make autocomplete popup (cmp, coc, etc.) transparent
+    require("notify").setup({
+      background_colour = "#000005",
+    })
+
+    vim.cmd("colorscheme gruvbox")
+
+    -- Make autocomplete popup transparent
     vim.cmd([[
       highlight Pmenu guibg=NONE
-      ]])
+    ]])
   end,
 }
 
