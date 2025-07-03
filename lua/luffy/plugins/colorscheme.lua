@@ -1,35 +1,54 @@
+-- lua/plugins/colorscheme.lua  (or any file you source from your Lazy setup)
 return {
-  "ellisonleao/gruvbox.nvim",
-  name = "gruvbox",
-  lazy = false,
-  priority = 1005,
-  config = function()
-    require("gruvbox").setup({
-      contrast = "hard",             -- Use "hard" contrast
-      transparent_mode = true,       -- Make background transparent
-      terminal_colors = true,        -- Enable terminal colors
-      italic = {
-        comments = false,
-        keywords = false,
-        functions = false,
-        strings = false,
-        variables = false,
+  {
+    "craftzdog/solarized-osaka.nvim",
+    name = "solarized-osaka",
+    lazy = false,          -- load at startup
+    priority = 1000,       -- load before everything else
+    opts = {
+      ------------------------------------------------------------------
+      -- 1. Core toggle
+      ------------------------------------------------------------------
+      transparent = true,      -- **master switch**: don’t set any bg
+
+      ------------------------------------------------------------------
+      -- 2. Fine‑tune what should be see‑through 
+      ------------------------------------------------------------------
+      styles = {
+        sidebars = "transparent",   -- nvim-tree, qf, help…
+        floats   = "transparent",   -- :lua print(vim.inspect()) pop‑ups
       },
-      overrides = {
-        Comment = { fg = "#deffaf", bold = true },
-      },
-    })
 
-    require("notify").setup({
-      background_colour = "#000005",
-    })
+      ------------------------------------------------------------------
+      -- 3. (Optional) wipe residual UI backgrounds
+      ------------------------------------------------------------------
+      on_highlights = function(hl, c)
+        local none = "NONE"   -- 👈 avoids the earlier “local transparent” bug
+        -- main editing area
+        hl.Normal       = { bg = none }
+        hl.NormalNC     = { bg = none }
+        hl.EndOfBuffer  = { bg = none }
+        -- line numbers & gutters
+        hl.SignColumn   = { bg = none }
+        hl.LineNr       = { bg = none }
+        hl.CursorLineNr = { bg = none }
+        -- splits / borders / statuslines
+        hl.WinSeparator = { bg = none }
+        hl.StatusLine   = { bg = none }
+        hl.StatusLineNC = { bg = none }
+        -- floating windows
+        hl.NormalFloat  = { bg = none }
+      end,
+    },
 
-    vim.cmd("colorscheme gruvbox")
-
-    -- Make autocomplete popup transparent
-    vim.cmd([[
-      highlight Pmenu guibg=NONE
-    ]])
-  end,
+    --------------------------------------------------------------------
+    -- 4. Setup + apply the colourscheme
+    --------------------------------------------------------------------
+    config = function(_, opts)
+      require("solarized-osaka").setup(opts)
+      vim.cmd.colorscheme("solarized-osaka")
+    end,
+  },
 }
+
 

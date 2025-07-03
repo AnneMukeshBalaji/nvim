@@ -39,6 +39,10 @@ return {
         ignore = false,
       },
     })
+    -- Must be after setup!
+    vim.cmd([[ highlight NvimTreeIndentMarker guifg=#ffffff ]])
+    vim.cmd([[ highlight NvimTreeFolderArrowClosed guifg=#ffffff ]])
+    vim.cmd([[ highlight NvimTreeFolderArrowOpen guifg=#ffffff ]])
 
     -- Keymaps
     local keymap = vim.keymap
