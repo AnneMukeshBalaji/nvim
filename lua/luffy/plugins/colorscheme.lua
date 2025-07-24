@@ -1,42 +1,33 @@
+
 return {
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    lazy = false,
-    config = function()
-      require("catppuccin").setup({
-        flavour = "mocha", -- or latte, frappe, macchiato
-        transparent_background = true, -- ✅ Transparent
-        no_italic = true,              -- ✅ No italics
-        styles = {
-          comments = { "bold" },       -- ✅ Bold comments
-        },
-      })
+  "folke/tokyonight.nvim",
+  name = "tokyonight",
+  lazy = false,
+  priority = 1000,
+  config = function()
+    require("tokyonight").setup({
+      style = "night", -- Options: "storm", "moon", "night", "day"
+      transparent = true, -- Make background transparent
+      terminal_colors = true,
+      styles = {
+        comments = { italic = false, bold = true, fg ='#f0f5d6' },
+        keywords = { italic = false},
+        functions = {italic = false},
+        variables = {italic = false},
+        sidebars = "transparent", -- also make sidebar (like NvimTree) transparent
+        floats = "transparent", -- make floating windows transparent
+      },
+    })
 
-      -- Apply the colorscheme
-      vim.cmd.colorscheme("catppuccin")
-
-      -- Force transparency for extra UI bits
-      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-      vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-      vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-      vim.api.nvim_set_hl(0, "VertSplit", { bg = "none" })
-      vim.api.nvim_set_hl(0, "Pmenu", { bg = "none" })         -- Completion popup
-      -- Relative line numbers column transparent
-      vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-      vim.api.nvim_set_hl(0, "CursorLineNr", { bg = "none" })
-      vim.api.nvim_set_hl(0, "LineNrAbove", { bg = "none" })
-      vim.api.nvim_set_hl(0, "LineNrBelow", { bg = "none" })
-
-      -- nvim-notify fallback background (Catppuccin Mocha base)
-      require("notify").setup({
-        background_colour = "#1e1e2e", -- Catppuccin Mocha base
-      })
-    end,
-  },
+    vim.cmd("colorscheme tokyonight")
+    -- Make autocomplete popup (cmp, coc, etc.) transparent
+    vim.cmd([[
+      highlight Pmenu guibg=NONE
+      highlight PmenuSel guibg=#283457 guifg=#ffffff
+      highlight PmenuSbar guibg=NONE
+      highlight PmenuThumb guibg=#3b4261
+      ]])
+  end,
 }
 
 
