@@ -26,9 +26,9 @@ return {
       require("mason-lspconfig").setup({
         ensure_installed = {
           "lua_ls",     -- Lua
-          "tsserver",   -- TypeScript/JavaScript
+          -- "tsserver",   -- TypeScript/JavaScript
           "pyright",    -- Python
-          "dartls",     -- Dart
+          -- "dartls",     -- Dart
         },
         automatic_installation = true,
       })
