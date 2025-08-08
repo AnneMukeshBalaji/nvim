@@ -18,7 +18,7 @@ return {
     "natebosch/vim-lsc",
     ft = { "dart" },
     config = function()
-      vim.g.lsc_enable_autocomplete = 1
+      vim.g.lsc_enable_autocomplete = 2
     end,
   },
   {

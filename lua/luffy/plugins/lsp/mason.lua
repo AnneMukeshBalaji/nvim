@@ -1,38 +1,54 @@
+
+-- lua/luffy/plugins/lsp/mason.lua
 return {
-  "williamboman/mason.nvim",
-  dependencies = {
-    "williamboman/mason-lspconfig.nvim",
-    "WhoIsSethDaniel/mason-tool-installer.nvim",
-  },
-  config = function()
-    -- import mason
-    local mason = require("mason")
-
-    -- import mason-lspconfig
-    local mason_lspconfig = require("mason-lspconfig")
-
-    local mason_tool_installer = require("mason-tool-installer")
-
-    -- enable mason and configure icons
-    mason.setup({
-      ui = {
-        icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗",
+  -- 1. Setup mason.nvim first
+  {
+    "williamboman/mason.nvim",
+    build = ":MasonUpdate", -- optional: updates registry
+    config = function()
+      require("mason").setup({
+        ui = {
+          icons = {
+            package_installed = "✓",
+            package_pending = "➜",
+            package_uninstalled = "✗",
+          },
         },
-      },
-    })
+      })
+    end,
+  },
 
-    mason_lspconfig.setup({
-      -- list of servers for mason to install
-      ensure_installed = {
-      }
-    })
+  -- 2. Then mason-lspconfig (depends on mason.nvim)
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "lua_ls",     -- Lua
+          "tsserver",   -- TypeScript/JavaScript
+          "pyright",    -- Python
+          "dartls",     -- Dart
+        },
+        automatic_installation = true,
+      })
+    end,
+  },
 
-    mason_tool_installer.setup({
-      ensure_installed = {
-      },
-    })
-  end,
+  -- 3. Optional: mason-tool-installer (formatters, linters, etc.)
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    config = function()
+      require("mason-tool-installer").setup({
+        ensure_installed = {
+          "prettier",    -- formatter
+          "stylua",      -- Lua formatter
+          "eslint_d",    -- JS/TS linter
+        },
+        auto_update = true,
+        run_on_start = true,
+      })
+    end,
+  },
 }
