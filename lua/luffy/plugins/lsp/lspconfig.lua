@@ -103,6 +103,16 @@ return {
       filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
     })
 
+    -- Dart
+    lspconfig.dartls.setup({
+      capabilities = capabilities,
+      filetypes = { "dart" },
+      init_options = {
+        closingLabels = true,
+        outline = true,
+        flutterOutline = true,
+      },
+    })
     -- Svelte
     lspconfig.svelte.setup({
       capabilities = capabilities,
