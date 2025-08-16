@@ -1,33 +1,33 @@
 
 return {
   "folke/tokyonight.nvim",
-  name = "tokyonight",
-  lazy = false,
   priority = 1000,
-  config = function()
-    require("tokyonight").setup({
-      style = "night", -- Options: "storm", "moon", "night", "day"
-      transparent = true, -- Make background transparent
-      terminal_colors = true,
-      styles = {
-        comments = { italic = false, bold = true, fg ='#f0f5d6' },
-        keywords = { italic = false},
-        functions = {italic = false},
-        variables = {italic = false},
-        sidebars = "transparent", -- also make sidebar (like NvimTree) transparent
-        floats = "transparent", -- make floating windows transparent
-      },
-    })
+  lazy = false,
+  opts = {
+    style = "night",
+    transparent = true,
+    terminal_colors = true,
+    styles = {
+      comments = { italic = false, bold = true }, -- color set below
+      keywords = { italic = false },
+      functions = { italic = false },
+      variables = { italic = false },
+      sidebars = "transparent",
+      floats = "transparent",
+    },
+    on_highlights = function(hl, c)
+      hl.Comment = { fg = "#f0f5d6", bold = true, italic = false }
+    end,
+  },
+  config = function(_, opts)
+    vim.opt.termguicolors = true
+    require("tokyonight").setup(opts)
+    vim.cmd.colorscheme("tokyonight")
 
-    vim.cmd("colorscheme tokyonight")
-    -- Make autocomplete popup (cmp, coc, etc.) transparent
-    vim.cmd([[
-      highlight Pmenu guibg=NONE
-      highlight PmenuSel guibg=#283457 guifg=#ffffff
-      highlight PmenuSbar guibg=NONE
-      highlight PmenuThumb guibg=#3b4261
-      ]])
+    -- Pmenu styling
+    vim.api.nvim_set_hl(0, "Pmenu",      { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "PmenuSel",   { bg = "#283457", fg = "#ffffff" })
+    vim.api.nvim_set_hl(0, "PmenuSbar",  { bg = "NONE" })
+    vim.api.nvim_set_hl(0, "PmenuThumb", { bg = "#3b4261" })
   end,
 }
-
-

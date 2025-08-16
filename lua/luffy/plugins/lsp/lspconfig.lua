@@ -1,130 +1,151 @@
+
 return {
   "neovim/nvim-lspconfig",
-  event = { "BufReadPre", "BufNewFile" },
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    { "williamboman/mason.nvim", config = true },
-    { "williamboman/mason-lspconfig.nvim", config = true },
-    { "antosha417/nvim-lsp-file-operations", config = true },
-    { "folke/neodev.nvim", opts = {} },
-  },
-  config = function()
-    local lspconfig = require("lspconfig")
-    local cmp_nvim_lsp = require("cmp_nvim_lsp")
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "hrsh7th/cmp-nvim-lsp",
+      { "williamboman/mason.nvim", config = true },
+      { "williamboman/mason-lspconfig.nvim", config = true },
+      { "antosha417/nvim-lsp-file-operations", config = true },
+      { "folke/neodev.nvim", opts = {} },
+    },
+    config = function()
+      local lspconfig = require("lspconfig")
+      local cmp_nvim_lsp = require("cmp_nvim_lsp")
 
-    vim.api.nvim_create_autocmd("LspAttach", {
-      group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-      callback = function(ev)
-        local opts = { buffer = ev.buf, silent = true }
-        local keymap = vim.keymap
+      -- Keymaps on LSP attach
+      vim.api.nvim_create_autocmd("LspAttach", {
+          group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+          callback = function(ev)
+          local opts = { buffer = ev.buf, silent = true }
+          local keymap = vim.keymap
 
-        opts.desc = "Go to definition"
-        keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
+          opts.desc = "Go to definition"
+          keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
 
-        opts.desc = "Show references"
-        keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
+          opts.desc = "Show references"
+          keymap.set("n", "gR", "<cmd>Telescope lsp_references<CR>", opts)
 
-        opts.desc = "Hover documentation"
-        keymap.set("n", "K", vim.lsp.buf.hover, opts)
+          opts.desc = "Hover documentation"
+          keymap.set("n", "K", vim.lsp.buf.hover, opts)
 
-        opts.desc = "Rename symbol"
-        keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+          opts.desc = "Rename symbol"
+          keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 
-        opts.desc = "Code actions"
-        keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+          opts.desc = "Code actions"
+          keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 
-        opts.desc = "Diagnostics (line)"
-        keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
+          opts.desc = "Diagnostics (line)"
+          keymap.set("n", "<leader>d", vim.diagnostic.open_float, opts)
 
-        opts.desc = "Next diagnostic"
-        keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
+          opts.desc = "Next diagnostic"
+          keymap.set("n", "]d", vim.diagnostic.goto_next, opts)
 
-        opts.desc = "Previous diagnostic"
-        keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
+          opts.desc = "Previous diagnostic"
+          keymap.set("n", "[d", vim.diagnostic.goto_prev, opts)
 
-        opts.desc = "Restart LSP"
-        keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
-      end,
-    })
+          opts.desc = "Restart LSP"
+          keymap.set("n", "<leader>rs", ":LspRestart<CR>", opts)
+          end,
+      })
+
+  -- Diagnostics settings
     vim.diagnostic.config({
-      signs = {
+        signs = {
         text = {
-          [vim.diagnostic.severity.ERROR] = " ",
-          [vim.diagnostic.severity.WARN]  = " ",
-          [vim.diagnostic.severity.HINT]  = "󰠠 ",
-          [vim.diagnostic.severity.INFO]  = " ",
+        [vim.diagnostic.severity.ERROR] = " ",
+        [vim.diagnostic.severity.WARN]  = " ",
+        [vim.diagnostic.severity.HINT]  = "󰠠 ",
+        [vim.diagnostic.severity.INFO]  = " ",
         },
-      },
-      virtual_text = {
+        },
+        virtual_text = {
         prefix = "●",
         spacing = 2,
-      },
-      underline = true,
-      update_in_insert = false,
-      severity_sort = true,
-    })
+        },
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
+        })
 
+  -- LSP capabilities for nvim-cmp
     local capabilities = cmp_nvim_lsp.default_capabilities()
+
+    -- ======================
+    -- LSP SERVER CONFIGS
+    -- ======================
 
     -- Lua
     lspconfig.lua_ls.setup({
-      capabilities = capabilities,
-      settings = {
+        capabilities = capabilities,
+        settings = {
         Lua = {
-          diagnostics = { globals = { "vim" } },
-          completion = { callSnippet = "Replace" },
+        diagnostics = { globals = { "vim" } },
+        completion = { callSnippet = "Replace" },
         },
-      },
-    })
+        },
+        })
 
-    -- HTML LSP
+  -- HTML
     lspconfig.html.setup({
-      capabilities = capabilities,
-      filetypes = { "html", "ejs" },
-    })
+        capabilities = capabilities,
+        filetypes = { "html", "ejs" },
+        })
 
-    -- Use ts_ls instead of deprecated tsserver
+  -- TypeScript/JavaScript
     lspconfig.ts_ls.setup({
-      capabilities = capabilities,
-    })
+        capabilities = capabilities,
+        })
 
-    -- Emmet with EJS
+  -- Emmet
     lspconfig.emmet_ls.setup({
-      capabilities = capabilities,
-      filetypes = {
+        capabilities = capabilities,
+        filetypes = {
         "html", "css", "scss", "sass", "less",
         "javascriptreact", "typescriptreact", "svelte", "ejs",
-      },
-    })
+        },
+        })
 
-    -- GraphQL
+  -- GraphQL
     lspconfig.graphql.setup({
-      capabilities = capabilities,
-      filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
-    })
+        capabilities = capabilities,
+        filetypes = { "graphql", "gql", "svelte", "typescriptreact", "javascriptreact" },
+        })
 
-    -- Dart
-    lspconfig.dartls.setup({
-      capabilities = capabilities,
-      filetypes = { "dart" },
-      init_options = {
+
+
+  -- Detect OS and set Dart binary path
+    local dart_cmd
+    if vim.fn.has("win32") == 1 then
+      -- Windows path to Dart (adjust if different)
+        dart_cmd = { "C:/flutter/bin/dart.exe", "language-server", "--protocol=lsp" }
+    else
+      -- Linux / WSL path
+        dart_cmd = { "/home/Marshall/develop/flutter/bin/dart", "language-server", "--protocol=lsp" }
+  end
+
+    -- Dart LSP setup
+    require("lspconfig").dartls.setup({
+        capabilities = capabilities,  -- your cmp_nvim_lsp capabilities
+        cmd = dart_cmd,
+        filetypes = { "dart" },
+        init_options = {
         closingLabels = true,
         outline = true,
         flutterOutline = true,
-      },
-    })
-    -- Svelte
-    lspconfig.svelte.setup({
-      capabilities = capabilities,
-      on_attach = function(client, bufnr)
-        vim.api.nvim_create_autocmd("BufWritePost", {
-          pattern = { "*.js", "*.ts" },
-          callback = function(ctx)
-            client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
-          end,
+        },
         })
-      end,
-    })
+  -- Svelte
+    lspconfig.svelte.setup({
+        capabilities = capabilities,
+        on_attach = function(client, bufnr)
+        vim.api.nvim_create_autocmd("BufWritePost", {
+            pattern = { "*.js", "*.ts" },
+            callback = function(ctx)
+            client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.match })
+            end,
+            })
+        end,
+        })
   end,
 }
-
