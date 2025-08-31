@@ -25,3 +25,16 @@ if vim.g.neovide then
   -- vim.g.transparency = 0.5
   vim.g.neovide_background_color = "#000000" .. alpha()
 end
+vim.g.clipboard = {
+  name = "win32yank-wsl",
+  copy = {
+    ["+"] = "win32yank.exe -i --crlf",
+    ["*"] = "win32yank.exe -i --crlf",
+  },
+  paste = {
+    ["+"] = "win32yank.exe -o --lf",
+    ["*"] = "win32yank.exe -o --lf",
+  },
+  cache_enabled = 0,
+}
+
