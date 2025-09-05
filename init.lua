@@ -51,3 +51,32 @@ vim.cmd [[
     autocmd BufNewFile,BufRead *.js,*.jsx set filetype=javascriptreact
   augroup END
 ]]
+
+
+vim.filetype.add({
+  extension = {
+    js = "javascript",
+    jsx = "javascriptreact",
+    ts = "typescript",
+    tsx = "typescriptreact",
+    c = "c",
+    cpp = "cpp",
+    java = "java",
+    py = "python",
+    rs = "rust",
+    dart = "dart",
+    html = "html",
+    css = "css",
+  },
+})
+
+
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = {
+    "c", "cpp", "java", "python",
+    "javascript", "typescript", "tsx",
+    "dart", "html", "css", "lua", "json"
+  },
+  highlight = { enable = true },
+  indent = { enable = true },
+}

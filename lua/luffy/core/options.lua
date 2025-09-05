@@ -41,5 +41,7 @@ opt.swapfile = false
 vim.filetype.add({
   extension = {
     js = "javascript",
+    jsx = "javascriptreact",
+    tsx = "typescriptreact",
   },
 })
