@@ -38,3 +38,16 @@ vim.g.clipboard = {
   cache_enabled = 0,
 }
 
+vim.cmd [[
+  augroup ReactFiletypes
+    autocmd!
+    autocmd BufNewFile,BufRead *.js,*.jsx set filetype=javascriptreact
+  augroup END
+]]
+
+vim.cmd [[
+  augroup ReactFiletypes
+    autocmd!
+    autocmd BufNewFile,BufRead *.js,*.jsx set filetype=javascriptreact
+  augroup END
+]]

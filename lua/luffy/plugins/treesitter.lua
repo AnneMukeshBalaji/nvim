@@ -1,3 +1,4 @@
+
 return {
   "nvim-treesitter/nvim-treesitter",
   event = { "BufReadPre", "BufNewFile" },
@@ -10,7 +11,8 @@ return {
     local treesitter = require("nvim-treesitter.configs")
 
     -- configure treesitter
-    treesitter.setup({ -- enable syntax highlighting
+    treesitter.setup({
+      -- enable syntax highlighting
       highlight = {
         enable = true,
       },
@@ -22,10 +24,11 @@ return {
       },
       -- ensure these language parsers are installed
       ensure_installed = {
+        -- Web / JS ecosystem
         "json",
         "javascript",
         "typescript",
-        "tsx",
+        "tsx",           -- React / React Native
         "yaml",
         "html",
         "css",
@@ -34,19 +37,29 @@ return {
         "markdown_inline",
         "svelte",
         "graphql",
+
+        -- Shell / configs
         "bash",
         "lua",
         "vim",
+        "vimdoc",
+        "query",
         "dockerfile",
         "gitignore",
-        "query",
-        "vimdoc",
+
+        -- System / backend
         "c",
+        "cpp",
         "go",
         "java",
         "python",
         "sql",
+
+        -- Flutter / Dart
+        "dart",
       },
+
+      -- incremental selection
       incremental_selection = {
         enable = true,
         keymaps = {
