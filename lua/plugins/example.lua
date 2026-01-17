@@ -8,6 +8,7 @@ if true then return {} end
 -- * add extra plugins
 -- * disable/enabled LazyVim plugins
 -- * override the configuration of LazyVim plugins
+-- NOTE: you can get warnings from the @param just ignore it
 return {
   -- add gruvbox
   { "ellisonleao/gruvbox.nvim" },

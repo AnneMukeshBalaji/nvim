@@ -3,7 +3,7 @@ return {
     "akinsho/toggleterm.nvim",
     version = "*",
     config = function()
-      local shell = vim.fn.executable("fish") == 1 and vim.fn.exepath("fish") or vim.o.shell
+      local shell = vim.fn.executable("zsh") == 1 and vim.fn.exepath("zsh") or vim.o.shell
 
       require("toggleterm").setup({
         shell = shell,
