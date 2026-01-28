@@ -3,6 +3,9 @@ vim.opt.clipboard = "unnamedplus"
 require("config.lazy")
 require("config.keymaps")
 
+vim.opt.swapfile = true
+vim.opt.shortmess:append("A")
+vim.opt.directory = vim.fn.stdpath("data") .. "/swap//"
 if vim.g.neovide then
   vim.g.neovide_window_blurred = true
   vim.g.neovide_floating_blur_amount_x = 8.0
