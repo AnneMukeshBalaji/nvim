@@ -1,0 +1,30 @@
+# This is the file that conatins the mason servers that i am using now 
+Installed
+◍ black
+◍ css-lsp
+◍ css-variables-language-server
+◍ cssmodules-language-server
+◍ curlylint
+◍ django-template-lsp
+◍ djlint
+◍ emmet-language-server
+◍ emmet-ls
+◍ eslint-lsp
+◍ eslint_d
+◍ html-lsp
+◍ htmlbeautifier
+◍ htmlhint
+◍ isort
+◍ jinja-lsp
+◍ json-lsp
+◍ jsonld-lsp
+◍ jsonlint
+◍ lua-language-server
+◍ pyright
+◍ ruff
+◍ shfmt
+◍ sqls
+◍ stylua
+◍ tailwindcss-language-server
+◍ tree-sitter-cli
+◍ typescript-language-server
