@@ -1,29 +1,11 @@
 return {
-  { "folke/tokyonight.nvim", enabled = false },
-  { "catppuccin/nvim", enabled = false },
   {
-    "rose-pine/neovim",
-    name = "rose-pine",
-    priority = 1000,
-    lazy = false,
+    "EdenEast/nightfox.nvim",
     opts = {
-      highlight_groups = {
-        Normal = { bg = "none" },
-        NormalFloat = { bg = "none" },
-        FloatBorder = { bg = "none" },
-        TelescopeNormal = { bg = "none" },
-        TelescopeBorder = { bg = "none" },
-        LazyNormal = { bg = "none", fg = "none" },
-        WhichKeyFloat = { bg = "none" },
-        NvimTreeNormal = { bg = "none" },
+      options = {
+        transparent = true,
+        style = "nightfox", -- nightfox, dayfox, dawnfox, duskfox, nordfox, terafox, carbonfox
       },
     },
-    config = function(_, opts)
-      require("rose-pine").setup(opts)
-      vim.cmd.colorscheme("rose-pine")
-      vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-      vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-      vim.api.nvim_set_hl(0, "FloatBorder", { bg = "none" })
-    end,
   },
 }
