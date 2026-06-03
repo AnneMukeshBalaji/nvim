@@ -25,7 +25,7 @@ return {
       scroll = { enabled = true },
       statuscolumn = { enabled = true },
       words = { enabled = true },
-      image = { enabled = true },
+      image = { enabled = false },
       picker = {
         sources = {
           explorer = {
