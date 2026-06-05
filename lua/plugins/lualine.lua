@@ -2,7 +2,8 @@ return {
   "nvim-lualine/lualine.nvim",
   opts = {
     options = {
-      theme = "auto"
-    }
+      theme = "auto",
+      icons_enabled = true,
+    },
   },
 }

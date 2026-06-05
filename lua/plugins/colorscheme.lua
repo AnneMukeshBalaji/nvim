@@ -18,7 +18,7 @@ return {
           transparent = true,
           lualine_bold = true,
           styles = {
-            comments = { italic = false, bold = true },
+            comments = { italic = true, bold = true },
             keywords = { italic = true },
             functions = { italic = true },
             sidebars = "transparent",
