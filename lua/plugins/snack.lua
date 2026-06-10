@@ -38,15 +38,7 @@ return {
           },
         },
       },
-    },
-  },
-  -- lazy.nvim
-  {
-    "folke/snacks.nvim",
-    opts = {
-      explorer = {
-        enabled = true,
-      },
+      explorer = { enabled = true },
     },
     keys = {
       { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
@@ -58,8 +50,7 @@ return {
       { "[[", function() Snacks.words.jump(-1, true) end, desc = "Prev Reference", mode = { "n", "t" } },
     },
   },
-  {
-    "nvim-neo-tree/neo-tree.nvim",
-    enabled = false,
-  },
+
+  -- Disable LazyVim's built-in neo-tree (we use snacks explorer instead)
+  { "nvim-neo-tree/neo-tree.nvim", enabled = false },
 }

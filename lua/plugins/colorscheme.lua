@@ -45,8 +45,6 @@ return {
 
             NvimTreeNormal = { bg = "NONE" },
             NvimTreeNormalNC = { bg = "NONE" },
-            NeoTreeNormal = { bg = "NONE" },
-            NeoTreeNormalNC = { bg = "NONE" },
 
             StatusLine = { bg = "NONE" },
             TabLine = { bg = "NONE" },
