@@ -24,7 +24,11 @@ return {
       quickfile = { enabled = true },
       scroll = { enabled = true },
       statuscolumn = { enabled = true },
-      words = { enabled = true },
+      words = {
+        enabled = true,
+        debounce = 200,
+        notify_jump = false,
+      },
       image = { enabled = false },
       picker = {
         sources = {
@@ -35,5 +39,27 @@ return {
         },
       },
     },
+  },
+  -- lazy.nvim
+  {
+    "folke/snacks.nvim",
+    opts = {
+      explorer = {
+        enabled = true,
+      },
+    },
+    keys = {
+      { "<leader>e", function() Snacks.explorer() end, desc = "File Explorer" },
+      { "<leader>E", function() Snacks.explorer() end, desc = "File Explorer" },
+      { "<leader>fe", function() Snacks.explorer() end, desc = "File Explorer" },
+      { "<leader>fE", function() Snacks.explorer() end, desc = "File Explorer" },
+      { "<leader>j", function() Snacks.terminal.toggle(nil, { win = { position = "float" } }) end, desc = "Toggle Terminal", mode = { "n", "t" } },
+      { "]]", function() Snacks.words.jump(1, true) end, desc = "Next Reference", mode = { "n", "t" } },
+      { "[[", function() Snacks.words.jump(-1, true) end, desc = "Prev Reference", mode = { "n", "t" } },
+    },
+  },
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    enabled = false,
   },
 }

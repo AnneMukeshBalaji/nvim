@@ -1,9 +1,7 @@
 return {
   "nvim-lualine/lualine.nvim",
-  opts = {
-    options = {
-      theme = "auto",
-      icons_enabled = true,
-    },
-  },
+  opts = function(_, opts)
+    opts.options = opts.options or {}
+    opts.options.theme = "auto"
+  end,
 }
