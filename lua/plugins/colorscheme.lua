@@ -1,31 +1,12 @@
 return {
-  -- {
-  --   "EdenEast/nightfox.nvim",
-  --   opts = {
-  --     options = {
-  --       transparent = true,
-  --       style = "nightfox", -- nightfox, dayfox, dawnfox, duskfox, nordfox, terafox, carbonfox
-  --     },
-  --   },
-  -- },
   {
-    {
-      "craftzdog/solarized-osaka.nvim",
-      lazy = false,
-      priority = 1000,
-      opts = function()
-        return {
-          transparent = true,
-          lualine_bold = true,
-          styles = {
-            comments = { italic = true, bold = true },
-            keywords = { italic = true },
-            functions = { italic = true },
-            sidebars = "transparent",
-            floats = "transparent",
-          },
-        }
-      end,
-    },
+    "ghifarit53/tokyonight-vim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.g.tokyonight_style = "storm"
+      vim.g.tokyonight_enable_italic = 1
+      vim.g.tokyonight_transparent_background = 1
+    end,
   },
 }
