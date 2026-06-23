@@ -59,7 +59,7 @@ return {
     vim.lsp.config("jdtls", {
       cmd = {
         "jdtls",
-        "--jvm-arg=-javaagent:" .. vim.fn.expand("~/.m2/repository/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar"),
+        "--jvm-arg=-javaagent:" .. vim.fn.expand("~/.m2/repository/org/projectlombok/lombok/1.18.30/lombok-1.18.30.jar"),
       },
       filetypes = { "java" },
       root_markers = {
@@ -72,6 +72,13 @@ return {
         "build.gradle",
         "build.gradle.kts",
         ".git",
+      },
+      init_options = {
+        bundles = {},
+        extendedClientCapabilities = {
+          resolveCodeAction = true,
+          classFileContentsSupport = true,
+        },
       },
     }),
     vim.lsp.config("pyright", {
