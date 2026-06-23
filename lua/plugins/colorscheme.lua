@@ -8,9 +8,9 @@ return {
     terminal_colors = true,
     styles = {
       comments = { italic = false },
-      keywords = { italic = true },
+      keywords = { bold = true },
       functions = { italic = true },
-      variables = { bold = true },
+      variables = { italic = true },
       sidebars = "transparent",
       floats = "transparent",
     },
@@ -23,4 +23,3 @@ return {
     vim.cmd.colorscheme("tokyonight")
   end,
 }
-
