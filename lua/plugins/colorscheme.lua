@@ -1,25 +1,28 @@
 return {
-  "folke/tokyonight.nvim",
+  "olimorris/onedarkpro.nvim",
   lazy = false,
   priority = 1000,
   opts = {
-    style = "night",
-    transparent = true,
-    terminal_colors = true,
-    styles = {
-      comments = { italic = false },
-      keywords = { bold = true },
-      functions = { italic = true },
-      variables = { italic = true },
-      sidebars = "transparent",
-      floats = "transparent",
+    theme = "onedark_dark", -- darker variant
+    options = {
+      transparency = true,
+      terminal_colors = true,
+      lualine_transparency = false,
+      highlight_inactive_windows = false,
     },
-    sidebars = { "qf", "help" },
-    dim_inactive = false,
-    lualine_bold = false,
+    styles = {
+      comments = "NONE",
+      keywords = "italic",
+      functions = "NONE",
+      variables = "NONE",
+      types = "NONE",
+      numbers = "NONE",
+      strings = "NONE",
+      operators = "NONE",
+    },
   },
   config = function(_, opts)
-    require("tokyonight").setup(opts)
-    vim.cmd.colorscheme("tokyonight")
+    require("onedarkpro").setup(opts)
+    vim.cmd.colorscheme("onedark")
   end,
 }

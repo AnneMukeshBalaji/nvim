@@ -116,6 +116,21 @@ return {
           },
         },
         html = {},
+        jdtls = {
+          cmd = {
+            "jdtls",
+            "--jvm-arg=-javaagent:" .. vim.fn.expand("~/.local/share/nvim/mason/share/jdtls/lombok.jar"),
+          },
+          settings = {
+            java = {
+              jdt = {
+                lombok = {
+                  enabled = true,
+                },
+              },
+            },
+          },
+        },
         yamlls = {
           settings = {
             yaml = {
