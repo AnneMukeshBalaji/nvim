@@ -1,28 +1,15 @@
 return {
-  "olimorris/onedarkpro.nvim",
+  "bluz71/vim-moonfly-colors",
+  name = "moonfly",
   lazy = false,
   priority = 1000,
-  opts = {
-    theme = "onedark_dark", -- darker variant
-    options = {
-      transparency = true,
-      terminal_colors = true,
-      lualine_transparency = false,
-      highlight_inactive_windows = false,
-    },
-    styles = {
-      comments = "NONE",
-      keywords = "italic",
-      functions = "NONE",
-      variables = "NONE",
-      types = "NONE",
-      numbers = "NONE",
-      strings = "NONE",
-      operators = "NONE",
-    },
-  },
-  config = function(_, opts)
-    require("onedarkpro").setup(opts)
-    vim.cmd.colorscheme("onedark")
+  init = function()
+    vim.g.moonflyTransparent = true
+    vim.g.moonflyItalics = false
+    vim.g.moonflyCursorColor = true
+    vim.g.moonflyTerminalColors = true
+  end,
+  config = function()
+    vim.cmd.colorscheme("moonfly")
   end,
 }
