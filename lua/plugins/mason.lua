@@ -12,6 +12,8 @@ return {
         "tailwindcss-language-server",
         "typescript-language-server",
         "css-lsp",
+        "prettierd",
+        "dart-debug-adapter",
       })
     end,
   },
@@ -23,6 +25,14 @@ return {
       inlay_hints = { enabled = false },
       ---@type lspconfig.options
       servers = {
+        dartls = {
+          settings = {
+            dart = {
+              showTodos = true,
+              completeFunctionCalls = true,
+            },
+          },
+        },
         cssls = {},
         tailwindcss = {
           root_dir = function(...)
