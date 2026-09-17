@@ -88,7 +88,7 @@ return {
             {
               "gd",
               function()
-                require("telescope.builtin").lsp_definitions({ reuse_win = false })
+                Snacks.picker.lsp_definitions()
               end,
               desc = "Goto Definition",
               has = "definition",
